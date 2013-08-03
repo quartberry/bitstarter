@@ -1,14 +1,7 @@
-var express = require('express');
+var util = require('util'),
+connect = require('connect'),
+port = 8080;
 
-var app = express.createServer(express.logger());
-
-app.get('/', function(request, response) {
-  var fs = require('fs');
-  var buffer = fs.readFileSync('index.html');
-  response.send(buffer.toString());
-});
-
-var port = process.env.PORT || 5000;
-app.listen(port, function() {
-  console.log("Listening on " + port);
-});
+connect.createServer(connect.static(__dirname + '/web/')).listen(port);
+util.puts('Listening on ' + port + '...');
+util.puts('Press Ctrl + C to stop.');
