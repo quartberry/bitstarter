@@ -160,7 +160,7 @@
 		FB.Event.subscribe('auth.authResponseChange', function(response) {
 			// Here we specify what we do with the response anytime this event occurs. 
 			if (response.status === 'connected') {
-				FB.api('/me', function(response) { alert('Hello ' + response.name + '.'); }
+				FB.api('/me', function(response) { alert('Hello ' + response.name + '.'); });
 			}
     }
 
