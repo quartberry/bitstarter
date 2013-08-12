@@ -11,51 +11,33 @@
     <script src="http://code.jquery.com/jquery.js"></script>
     <script src="js/bootstrap.js"></script>
     <style type="text/css">
-     
-      /* Large desktop */
-      @media (min-width: 980px) { 
+			
+			@media (min-width: 980px) { 
         body {
          padding-top: 60px;
          padding-bottom: 20px;
         }
-       .linediv-l {
-         border-right: 1px white solid;
-        }
-       .linediv-r {
-         border-left: 1px white solid;
-       }
       }
-
-      /* Landscape phones and down */
-      @media (max-width: 480px) { 
-       .copy {
-         padding: 2.5% 10%;
-       }
-       .linediv-l {
-         border-bottom: 1px white solid;
-       }
-       .linediv-r {
-         border-top: 1px white solid;
-       }
-      }
-
-      /* All form factors */
-
-      /* Main body and headings */
-      body{
+			
+			
+			body {
         font-family: 'Open Sans', Helvetica, Arial, sans-serif;
       }
-      .heading, .subheading {
-        font-family: 'Ubuntu', Helvetica, Arial, sans-serif;
-        text-align: center;
-      }
-      p.lead {
+      
+      
+			h3 {
+        padding-top: 20px;
+				font-size: 14pt;
+			}
+			
+			p.lead {
         font-family: Helvetica, Arial, sans-serif;
         padding-top: 1.5%;
         padding-bottom: 1%;
         font-size: 16pt;
         line-height: 20pt;
       }
+      
       p.body {
         text-align: justify;
       }
@@ -63,72 +45,11 @@
         font-size:12pt;
         line-height: 18pt;
       }
-			.subsubheading {
-        font-family: 'Ubuntu', Helvetica, Arial, sans-serif;
-        text-align: left;
-        font-weight: bold;
-			}
-			h3 {
-        padding-top: 20px;
-				font-size: 14pt;
-			}
+      
 			img.center {
 				display: block;
 				margin-left: auto;
 				margin-right: auto;
-			}
-
-      /* Video pitch and Action */
-      .pitch {
-        /* padding: 2.5% 0%; */
-        padding-bottom: 2.5%;
-      }
-      .order {
-        padding: 2% 0%;
-      }
-      .actions {
-        background-color: #343434;
-        padding: 3% 0%;
-      }
-      .video, .thermometer, .order, .social, .statistics {
-        text-align: center;
-      }
-      .statistics h3, .statistics p {
-        color: white;
-      }
-
-      /* Marketing Copy and Footer */
-      .copy {
-        padding-top: 2.5%;
-        padding-bottom: 2.5%;
-        text-align: justify;
-      }
-      .asset {
-        padding: 2.5% 0%;
-      }
-      .footer {
-        color: #cccccc;
-        text-align: center;
-        font-size: 10pt;
-      }
-      .footer a {
-        color: #ccccff;
-      }
-      
-      div.addthis_toolbox {
-      	width: 280px;
-				margin: 10pt auto 10pt auto;
-			}
-			
-			div.fblogin {
-				width: 200px
-				color: #ffffff;
-				margin: 0pt auto 20pt auto;
-			}
-			
-			div.fbtextc {
-				color: #ffffff;
-				margin: 0pt auto 20pt auto;
 			}
 			
       .blankspace {
@@ -140,6 +61,44 @@
         color: #aaaaaa;
       }
       
+      .heading, .subheading {
+        font-family: 'Ubuntu', Helvetica, Arial, sans-serif;
+        text-align: center;
+      }
+      
+      .actions {
+        background-color: #343434;
+        text-align: center;
+      }
+      
+      div.addthis_toolbox {
+      	width: 280px;
+				margin: 10pt auto 10pt auto;
+			}
+			
+      .footer {
+        color: #cccccc;
+        text-align: center;
+        font-size: 10pt;
+      }
+      
+      .statistics {
+      	padding-top: 20pt;
+        color: white;
+        text-align: center;
+      }
+			
+			div.fblogin {
+				width: 200px
+				color: #ffffff;
+				margin: 0pt auto 12pt auto;
+			}
+			
+			div.fbtextc {
+				color: #ffffff;
+				margin: 6pt auto 6pt auto;
+        text-align: center;
+			}
     </style>
 		<script type="text/javascript">
 			var _gaq = _gaq || [];
@@ -152,7 +111,6 @@
   <div id="fb-root"></div>
 	<script>
 		window.fbAsyncInit = function() {
-			// init the FB JS SDK
 			FB.init({
 				appId      : '426696290782311',                    						// App ID from the app dashboard
 				channelUrl : 'http://harmonyapp.herokuapp.com/channel.html', 	// Channel file for x-domain comms
@@ -160,60 +118,33 @@
 				xfbml      : true                                  						// Look for social plugins on the page
 			});
 
-  // Here we subscribe to the auth.authResponseChange JavaScript event. This event is fired
-  // for any authentication related change, such as login, logout or session refresh. This means that
-  // whenever someone who was previously logged out tries to log in again, the correct case below 
-  // will be handled. 
-  FB.Event.subscribe('auth.authResponseChange', function(response) {
-    // Here we specify what we do with the response anytime this event occurs. 
-    if (response.status === 'connected') {
-      // The response object is returned with a status field that lets the app know the current
-      // login status of the person. In this case, we're handling the situation where they 
-      // have logged in to the app.
-      document.getElementById('fbtext').innerHTML = "Welcome to our page!";
-      testAPI();
-    } else if (response.status === 'not_authorized') {
-      // In this case, the person is logged into Facebook, but not into the app, so we call
-      // FB.login() to prompt them to do so. 
-      // In real-life usage, you wouldn't want to immediately prompt someone to login 
-      // like this, for two reasons:
-      // (1) JavaScript created popup windows are blocked by most browsers unless they 
-      // result from direct interaction from people using the app (such as a mouse click)
-      // (2) it is a bad experience to be continually prompted to login upon page load.
-      document.getElementById('fbtext').innerHTML = "Register your support for this project!";
-      // FB.login();
-    } else {
-      // In this case, the person is not logged into Facebook, so we call the login() 
-      // function to prompt them to do so. Note that at this stage there is no indication
-      // of whether they are logged into the app. If they aren't then they'll see the Login
-      // dialog right after they log in to Facebook. 
-      // The same caveats as above apply to the FB.login() call here.
-      document.getElementById('fbtext').innerHTML = "Register your support for this project!";
-      // FB.login();
-    }
-  });
-  };
+			FB.Event.subscribe('auth.authResponseChange', function(response) {
+				if (response.status === 'connected') {
+					document.getElementById('fbtext').innerHTML = "Welcome to our page!";
+					document.getElementById('support_button').innerHTML = "<button class=\"btn btn-success btn-large\">Support</button>";
+				}
+				else if (response.status === 'not_authorized') {
+					document.getElementById('fbtext').innerHTML = "Log-in and register your support for this project!";
+					document.getElementById('support_button').innerHTML = "";
+				} else {
+					document.getElementById('fbtext').innerHTML = "Log-in and register your support for this project!";
+					document.getElementById('support_button').innerHTML = "";
+				}
+			});
+		};
 
-  // Load the SDK asynchronously
-  (function(d){
-   var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
-   if (d.getElementById(id)) {return;}
-   js = d.createElement('script'); js.id = id; js.async = true;
-   js.src = "//connect.facebook.net/en_US/all.js";
-   ref.parentNode.insertBefore(js, ref);
-  }(document));
+		// Load the SDK asynchronously
+		(function(d){
+			var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+			if (d.getElementById(id)) {return;}
+			js = d.createElement('script'); js.id = id; js.async = true;
+			js.src = "//connect.facebook.net/en_US/all.js";
+			ref.parentNode.insertBefore(js, ref);
+		}(document));
 
-  // Here we run a very simple test of the Graph API after login is successful. 
-  // This testAPI() function is only called in those cases. 
-  function testAPI() {
-    console.log('Welcome!  Fetching your information.... ');
-    FB.api('/me', function(response) {
-      console.log('Good to see you, ' + response.name + '.');
-    });
-  }
 	</script>
 	
-	<div class="navbar navbar-inverse navbar-fixed-top">
+		<div class="navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
           <button type="button" class="btn btn-navbar"
@@ -300,55 +231,51 @@
     	</div>
       
       <div class="row-fluid support">
-        <div class="span6 offset3 actions">
-          <div class="span8 offset2">
-            <div class="statistics">
-              <div class="span4">
-                <!-- linediv-l and linediv-r give dividing lines that look
-                different in horizontal and vertical layouts, illustrating
-                media queries. -->
-                <div class="linediv-l">
-                <h3>220</h3> <p>backers</p>
-                </div>
-              </div>
-              <div class="span4">
-                <div class="linediv-c">
-                  <h3>$600</h3> <p>of $1,000</p>
-                </div>
-              </div>
-              <div class="span4">
-                <div class="linediv-r">
-                <h3>10</h3> <p>days left</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="span8 offset2">
-            <!-- Bootstrap progress bar -->
-            <!-- http://twitter.github.io/bootstrap/components.html#progress -->
-            <div class="thermometer progress active">
-              <div class="bar bar-blue" style="width: 60%;"></div>
-              <div class="bar bar-grey" style="width: 40%;"></div>
-            </div>
-          </div>
-          <div class="span8 offset2 order">
-						<div class="fbtextc" id="fbtext"></div>
-						<div class="fblogin"><fb:login-button show-faces="false" autologoutlink="true"></fb:login-button></div>
-					</div>
-          <div class="span8 offset2 social">
-						<!-- AddThis Button BEGIN -->
-						<div class="addthis_toolbox addthis_default_style addthis_32x32_style">
-						<a class="addthis_button_preferred_1"></a>
-						<a class="addthis_button_preferred_2"></a>
-						<a class="addthis_button_preferred_3"></a>
-						<a class="addthis_button_preferred_4"></a>
-						<a class="addthis_button_compact"></a>
-						<a class="addthis_counter addthis_bubble_style"></a>
+        <div class="span6 offset3" style="border:1px solid #ccc;">
+        <div class="actions">
+
+					<div class="row statistics">
+						<div class="span2">
 						</div>
-						<script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
-						<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-51fe0658021f8292"></script>
-						<!-- AddThis Button END -->
+						<div class="span4">
+							<p>0 of 10<p>
+							<p>backers</p>
+						</div>
+						<div class="span4">
+							<p>10 days</p>
+							<p>left</p>
+						</div>
+						<div class="span2">
+						</div>
           </div>
+          
+					<div class="row">
+						<div class="span2">
+						</div>
+						<div class="span8">
+							<div class="thermometer progress active">
+								<div class="bar bar-blue" style="width: 0%;"></div>
+								<div class="bar bar-grey" style="width: 100%;"></div>
+							</div>
+						</div>
+					</div>
+					
+					<div class="row">
+						<div class="span8 offset2 order">
+							<div class="fbtextc" id="fbtext"></div>
+							<div class="fblogin"><fb:login-button show-faces="false" autologoutlink="true"></fb:login-button></div>
+						</div>
+					</div>
+					
+					<div id="support_button">
+					</div>
+					 
+					<div class="row">
+						<div class="span8 offset2 order">
+						</div>
+					</div>
+					
+        </div>
         </div>
       </div>
       
@@ -452,6 +379,8 @@
 			ga.src = ('https:'   == document.location.protocol ? 'https://ssl'   : 'http://www') + '.google-analytics.com/ga.js';
 			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 			})();
+		document.getElementById('fbtext').innerHTML = "Log-in and register your support for this project!";
+		document.getElementById('support_button').innerHTML = "";
 		</script>
 
   </body>
