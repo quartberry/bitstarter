@@ -120,9 +120,11 @@
 				margin: 10pt auto 10pt auto;
 			}
 			
-			div.fb-login-button {
+			div.fblogin {
 				width: 200px
-				margin auto;
+				margin: auto;
+				color: #ffffff;
+				vertical-align:text-top;
 			}
       
       .blankspace {
@@ -213,12 +215,9 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="brand" href="http://coursera.org/">Bitstarter</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
-              <li class="active"><a href="http://ec2-54-218-27-33.us-west-2.compute.amazonaws.com:8080/">Home</a></li>
-              <li><a href="http://www.pazolli.org/">About</a></li>
-              <li><a href="mailto:quartberry@gmail.com">Contact</a></li>
+              <li class="active"><a href="http://harmonyapp.herokuapp.com/">Harmony @ Home</a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -325,8 +324,10 @@
               <div class="bar bar-grey" style="width: 40%;"></div>
             </div>
           </div>
-          <div class="span4 offset4 order">
-						<fb:login-button show-faces="true" autologoutlink="true" width="200" max-rows="1"></fb:login-button>
+          <div class="span8 offset2 order">
+						<div class="fblogin">
+						<fb:login-button show-faces="false" autologoutlink="true"></fb:login-button>&nbsp;&nbsp;&nbsp;and&nbsp;register&nbsp;your&nbsp;support&nbsp;for&nbsp;this&nbsp;project!
+						</div>
 					</div>
           <div class="span8 offset2 social">
 						<!-- AddThis Button BEGIN -->
